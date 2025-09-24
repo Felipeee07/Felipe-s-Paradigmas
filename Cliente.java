@@ -96,11 +96,11 @@ public class Cliente {
                 System.out.println("Posición " + i + " vacía");
             }
         }
-
-        // 🔹 Invocar los métodos polimórficos
+        
         System.out.println("\n POLIMORFISMO ");
         mostrarTiempo(recetaPostre);  
         Receta demo = crearRecetaDemo(); 
         mostrarTiempo(demo);             
     }
 }
+
