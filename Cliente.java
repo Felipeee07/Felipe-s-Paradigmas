@@ -4,13 +4,22 @@ import co.edu.poli.actividad3.model.*;
 import co.edu.poli.actividad3.servicios.*;
 
 /**
- * Clase cliente para probar las recetas, mostrar tiempos y manejar CRUD.
+ * Clase cliente para probar el funcionamiento del sistema de recetas.
+ * Contiene la lógica principal para crear, mostrar y manipular objetos del modelo,
+ * incluyendo operaciones CRUD, polimorfismo y uso de arreglos.
+ *
+ * <p>Demuestra herencia, composición y sobreescritura en el manejo de recetas.</p>
  * 
  * @author Felipe Parra
  */
 public class Cliente {
 
-    // Muestra el tiempo total calculado de cualquier receta (polimorfismo)
+    /**
+     * Muestra el tiempo total de preparación y cocción de una receta,
+     * utilizando el método polimórfico {@code calcularTiempo()}.
+     *
+     * @param receta Objeto de tipo {@code Receta} o una de sus subclases.
+     */
     public static void mostrarTiempo(Receta receta) {
         System.out.println(
             receta.getClass().getSimpleName() +
@@ -18,7 +27,11 @@ public class Cliente {
         );
     }
 
-    // Método para crear una receta de prueba simple (demostración)
+    /**
+     * Crea y retorna una receta de postre de demostración con valores simples.
+     *
+     * @return Una instancia de {@code RecetaPostre} con tiempos y dulzura definidos.
+     */
     public static Receta crearRecetaDemo() {
         RecetaPostre demo = new RecetaPostre();
         demo.setTiempoPreparacion(10);
@@ -27,6 +40,13 @@ public class Cliente {
         return demo; 
     }
 
+    /**
+     * Método principal para ejecutar el sistema.
+     * Crea y manipula recetas, prueba el arreglo de recetas,
+     * y ejecuta operaciones CRUD con la implementación proporcionada.
+     *
+     * @param args Argumentos de línea de comandos (no utilizados).
+     */
     public static void main(String[] args) {
 
         // Crear objetos básicos
@@ -76,22 +96,20 @@ public class Cliente {
         plato2.setTiempoCoccion(35);
         plato2.setIdReceta(5);
 
-        // Asignar recetas en posiciones del arreglo (sin sobrescribir recetas existentes)
+        // Asignar recetas en posiciones del arreglo
         recetas[0] = plato1;
         recetas[1] = postre1;
         recetas[2] = plato2;
-        // Las posiciones 3 y 4 están inicialmente vacías (null)
 
-        // Intentar asignar recetas en posiciones vacías
+        // Agregar receta en la primera posición vacía
         for (int i = 0; i < recetas.length; i++) {
             if (recetas[i] == null) {
-                // Por ejemplo, agregamos recetaPostre a la primera posición vacía
                 recetas[i] = recetaPostre;
-                break;  // Salir luego de agregar una receta
+                break;
             }
         }
 
-        // Mostrar arreglo de recetas con sus tiempos
+        // Mostrar arreglo de recetas con tiempos
         System.out.println("\nArreglo de recetas:");
         for (int i = 0; i < recetas.length; i++) {
             if (recetas[i] != null) {
@@ -102,18 +120,18 @@ public class Cliente {
             }
         }
 
-        // Demostración de polimorfismo con mostrarTiempo
+        // Demostración de polimorfismo
         System.out.println("\nPOLIMORFISMO");
         mostrarTiempo(recetaPostre);
         Receta demo = crearRecetaDemo();
         mostrarTiempo(demo);
 
-        // Instanciar la clase para manejar CRUD
+        // CRUD
         OperacionCrud crud = new ImplementacionOperacionCRUD();
 
         System.out.println("\n===== OPERACIONES CRUD =====");
 
-        // CREATE - agregar recetas al CRUD
+        // CREATE
         System.out.println("\nCREATE");
         crud.create(receta);
         crud.create(recetaPostre);
@@ -121,11 +139,11 @@ public class Cliente {
         crud.create(postre1);
         crud.create(plato2);
 
-        // LISTAR todas las recetas tras creación
+        // LISTAR
         System.out.println("\nListado de recetas tras creación:");
         crud.listar();
 
-        // READ - buscar receta por ID
+        // READ
         System.out.println("\nREAD");
         int idBuscar = 2;
         System.out.println("\nBuscando receta con ID " + idBuscar + ":");
@@ -136,7 +154,7 @@ public class Cliente {
             System.out.println("Receta no encontrada.");
         }
 
-        // UPDATE - actualizar receta por ID
+        // UPDATE
         System.out.println("\nUPDATE");
         System.out.println("\nActualizando receta con ID 4 (tiempoPreparacion a 50)...");
         Receta recetaActualizar = crud.read(4);
@@ -145,12 +163,11 @@ public class Cliente {
             crud.update(4, recetaActualizar);
         }
 
-        // DELETE - eliminar receta por ID
+        // DELETE
         System.out.println("\nDELETE");
         int idEliminar = 3;
         System.out.println("\nEliminando receta con ID " + idEliminar + "...");
         crud.delete(idEliminar);
-
     }
 }
 
