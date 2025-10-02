@@ -1,0 +1,368 @@
+
+enlace https://github.com/Felipeee07/Felipe-s-Paradigmas.git
+
+Clase Receta
+
+1. ATRIBUTOS PRIVADOS (ENCAPSULAMIENTO)
+   - Línea 6 → private String dificultad;
+   - Línea 7 → private Ingrediente[] ingrediente;
+   - Línea 8 → private Autor autor;
+   - Línea 9 → private Instruccion[] instruccion;
+   - Línea 10 → private int tiempoPreparacion;
+   - Línea 11 → private int tiempoCoccion;
+   - Línea 12 → private String utensilio;
+   - Línea 13 → private String tipo;
+   - Línea 14 → private int porcion;
+   - Línea 15 → private String tipoCocina;
+   - Línea 16 → private String descripcion;
+   - Línea 17 → private ValorNutricional valorNutricional;
+   - Línea 18 → private int idReceta;
+   - Línea 19 → private Pais pais;
+   - Línea 20 → private int fechaCreacion;
+   - Línea 21 → private boolean esVegano;
+   - Línea 22 → private Comentario comentario;
+   - Línea 23 → private double calificacion;
+   Explicación: Los atributos son privados para aplicar encapsulamiento y acceder mediante getters/setters.
+
+2. MÉTODO CONSTRUCTOR VACÍO
+   - Línea 25 → public Receta() { }
+   Explicación: Constructor por defecto para crear objetos sin inicializar atributos.
+
+3. MÉTODO CONSTRUCTOR CON PARÁMETROS
+   - Línea 29 → public Receta(String dificultad, Ingrediente[] ingrediente, Autor autor, ...)
+   Explicación: Permite inicializar un objeto Receta con valores definidos al momento de su creación.
+
+4. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Línea 50 en adelante (ej: getCategoria, setDificultad, getIngrediente, setIngrediente, etc.)
+   Explicación: Métodos públicos que permiten acceder y modificar atributos privados.
+
+5. MULTIPLICIDAD (ASOCIACIÓN UNO A MUCHOS)
+   - Línea 7 → private Ingrediente[] ingrediente;
+   - Línea 9 → private Instruccion[] instruccion;
+   Explicación: Una receta puede tener múltiples ingredientes e instrucciones.
+
+6. AGREGACIÓN (COMPOSICIÓN CON OTRAS CLASES)
+   - Línea 8 → private Autor autor;
+   - Línea 17 → private ValorNutricional valorNutricional;
+   - Línea 19 → private Pais pais;
+   - Línea 22 → private Comentario comentario;
+   Explicación: La clase Receta está compuesta por objetos de otras clases.
+
+7. MÉTODOS PROPIOS
+   - Línea 140 → public int calcularEdadActual()
+   Explicación: Método que calcula la edad de la receta según el año de creación.
+   - Línea 145 → public int calcularTiempo()
+   Explicación: Método que devuelve el tiempo total de preparación + cocción.
+
+8. MODIFICADOR FINAL (ATRIBUTO)
+   - Línea 151 → private final String categoria = "Gastronomía";
+   Explicación: El atributo no puede ser modificado después de inicializado.
+
+9. MODIFICADOR FINAL (MÉTODO)
+   - Línea 154 → public final String imprimirCategoria()
+   Explicación: Este método no puede ser sobrescrito por las subclases.
+
+10. MÉTODO toString (SOBREESCRITURA)
+   - Línea 160 → @Override public String toString()
+   Explicación: Se sobrescribe toString() para mostrar todos los atributos de manera legible.
+
+11. POLIMORFISMO (SOBREESCRITURA)
+   - Se aplica en el método calcularTiempo() cuando las subclases como `Ingrediente` lo redefinen.
+   Explicación: Permite que cada subclase tenga su propia versión de calcularTiempo().
+
+Clase Ingrediente
+
+1. MÉTODO CONSTRUCTOR
+   - Línea 13 → public Ingrediente(...) { ... }
+     Explicación: Permite inicializar un objeto de la clase Ingrediente con valores específicos al momento de su creación.
+
+2. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Línea 21 → public String getIdIngrediente()
+   - Línea 25 → public void setIdIngrediente(String idIngrediente)
+   - Línea 29 → public String getNombre()
+   - Línea 33 → public void setNombre(String nombre)
+   - Línea 37 → public String getCantidad()
+   - Línea 41 → public void setCantidad(String cantidad)
+   - Línea 45 → public String getSabor()
+   - Línea 49 → public void setSabor(String sabor)
+   - Línea 53 → public String getTipo()
+   - Línea 57 → public void setTipo(String tipo)
+   - Línea 61 → public boolean isEsFresco()
+   - Línea 65 → public void setEsFresco(boolean esFresco)
+     Explicación: Los getters y setters permiten acceder y modificar los atributos privados de la clase de forma controlada.
+
+3. MÉTODO toString
+   - Línea 69 → @Override public String toString()
+     Explicación: Sobrescribe el método de Object para mostrar en texto los atributos del objeto de manera legible.
+
+4. VISIBILIDADES
+   - Línea 6 → private String idIngrediente;
+   - Línea 7 → private String nombre;
+   - Línea 8 → private String cantidad;
+   - Línea 9 → private String sabor;
+   - Línea 10 → private String tipo;
+   - Línea 11 → private boolean esFresco;
+     Explicación: Se usa el modificador `private` para encapsular los atributos y restringir el acceso directo desde fuera de la clase.
+
+5. SOBRESCRITURA DE MÉTODOS
+   - Línea 80 → @Override public int calcularTiempo()
+     Explicación: Sobrescribe un método heredado de la superclase `Receta` para adaptarlo a la lógica específica de un ingrediente.
+
+6. HERENCIA
+   - Línea 3 → public class Ingrediente extends Receta
+     Explicación: La clase Ingrediente hereda de la clase Receta, adquiriendo sus métodos y pudiendo redefinirlos.
+ Clase Comentario
+
+1. MODIFICADOR FINAL (CLASE NO HEREDABLE)
+   - Línea 3 → public final class Comentario
+     Explicación: La palabra clave `final` indica que la clase no puede ser heredada por ninguna otra, garantizando su inmutabilidad en cuanto a estructura.
+
+2. ATRIBUTOS PRIVADOS (ENCAPSULAMIENTO)
+   - Línea 4 → private String idComentario;
+   - Línea 5 → private String autor;
+   - Línea 6 → private String fecha;
+   - Línea 7 → private double calificacion;
+     Explicación: Los atributos son privados para proteger los datos y solo se accede a ellos mediante getters y setters.
+
+3. MÉTODO CONSTRUCTOR
+   - Línea 10 → public Comentario(String idComentario, String autor, String fecha, double calificacion)
+     Explicación: Inicializa un objeto Comentario con valores definidos en el momento de su creación.
+
+4. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Línea 16 → public String getIdComentario()
+   - Línea 20 → public void setIdComentario(String idComentario)
+   - Línea 24 → public String getAutor()
+   - Línea 28 → public void setAutor(String autor)
+   - Línea 32 → public String getFecha()
+   - Línea 36 → public void setFecha(String fecha)
+   - Línea 40 → public double getCalificacion()
+   - Línea 44 → public void setCalificacion(double calificacion)
+     Explicación: Permiten acceder y modificar los valores privados de la clase.
+
+5. MÉTODO toString (SOBREESCRITURA)
+   - Línea 49 → @Override public String toString()
+     Explicación: Sobrescribe el método `toString` de la clase Object para devolver en texto legible los valores del objeto Comentario.
+
+ Clase Instruccion
+
+1. HERENCIA
+   - Línea 3 → public class Instruccion extends Receta
+   Explicación: La clase Instruccion hereda de Receta, adquiriendo sus atributos y métodos.
+
+2. ATRIBUTOS PRIVADOS (ENCAPSULAMIENTO)
+   - Línea 4 → private String idInstruccion;
+   - Línea 5 → private int paso;
+   - Línea 6 → private String descripcion;
+   - Línea 7 → private int duracion;
+   - Línea 8 → private String dificultad;
+   Explicación: Los atributos son privados para proteger los datos y controlarlos mediante getters y setters.
+
+3. CONSTRUCTOR CON PARÁMETROS
+   - Línea 11 → public Instruccion(String idInstruccion, int paso, String descripcion, int duracion, String dificultad)
+   Explicación: Permite inicializar un objeto Instruccion con valores definidos al crearlo.
+
+4. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Desde línea 18 hasta línea 49 (ej: getIdInstruccion, setPaso, getDescripcion, etc.)
+   Explicación: Métodos públicos que permiten acceder y modificar atributos privados.
+
+5. MÉTODO toString (SOBREESCRITURA)
+   - Línea 53 → @Override public String toString()
+   Explicación: Se sobrescribe el método toString() para mostrar los valores de los atributos de forma legible.
+
+6. POLIMORFISMO (SOBREESCRITURA)
+   - Línea 63 → @Override public int calcularTiempo()
+   Explicación: Redefine el método calcularTiempo() de la clase padre (Receta), sumando 5 minutos adicionales.
+
+Clase Comentario
+
+1. MODIFICADOR FINAL
+   - Línea 3 → public final class Comentario
+   Explicación: La clase está marcada como final, por lo que no puede ser heredada.
+
+2. ATRIBUTOS PRIVADOS (ENCAPSULAMIENTO)
+   - Línea 4 → private String idComentario;
+   - Línea 5 → private String autor;
+   - Línea 6 → private String fecha;
+   - Línea 7 → private double calificacion;
+   Explicación: Se usa private para restringir acceso directo y proteger los datos.
+
+3. CONSTRUCTOR CON PARÁMETROS
+   - Línea 10 → public Comentario(String idComentario, String autor, String fecha, double calificacion)
+   Explicación: Inicializa los atributos del objeto al momento de crearlo.
+
+4. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Desde línea 16 hasta línea 40 (ej: getAutor, setFecha, getCalificacion, etc.)
+   Explicación: Permiten acceder y modificar los atributos privados de forma controlada.
+
+5. MÉTODO toString (SOBREESCRITURA)
+   - Línea 44 → @Override public String toString()
+   Explicación: Sobrescribe el método toString() de Object para mostrar los valores del objeto de forma legible.
+   
+   Clase Autor
+
+1. ATRIBUTOS PRIVADOS (ENCAPSULAMIENTO)
+   - Línea 3 → private String nombre;
+   - Línea 4 → private Pais pais;
+   - Línea 5 → private String cedula;
+   - Línea 6 → private int edad;
+   - Línea 7 → private int numeroRecetas;
+   - Línea 8 → private String email;
+   Explicación: Se definen como privados para proteger los datos y acceder a ellos solo mediante métodos.
+
+2. CONSTRUCTOR CON PARÁMETROS
+   - Línea 11 → public Autor(String nombre, Pais pais, String cedula, int edad, int numeroRecetas, String email)
+   Explicación: Permite inicializar los atributos del objeto cuando se crea.
+
+3. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Desde línea 18 hasta línea 56
+   Explicación: Métodos públicos para consultar y modificar los atributos privados de forma controlada.
+
+4. MÉTODO toString (SOBREESCRITURA)
+   - Línea 60 → @Override public String toString()
+   Explicación: Sobrescribe el método de Object para mostrar un resumen legible de los atributos del objeto.
+
+Clase Pais
+
+1. ATRIBUTOS PRIVADOS (ENCAPSULAMIENTO)
+   - Línea 3 → private String idPais;
+   - Línea 4 → private String nombrePais;
+   Explicación: Los atributos son privados para proteger los datos y acceder solo mediante métodos públicos.
+
+2. CONSTRUCTOR CON PARÁMETROS
+   - Línea 7 → public Pais(String idPais, String nombrePais)
+   Explicación: Permite inicializar los atributos al momento de crear un objeto Pais.
+
+3. MÉTODOS DE ACCESO (GETTERS Y SETTERS)
+   - Desde línea 12 hasta línea 23
+   Explicación: Métodos públicos para consultar y modificar los atributos privados de forma controlada.
+
+4. MÉTODO toString (SOBREESCRITURA)
+   - Línea 27 → @Override public String toString()
+   Explicación: Sobrescribe el método de Object para mostrar los datos del objeto en formato de texto legible.
+
+Clase RecetaPlatoPrincipal
+
+1. HERENCIA
+   - Línea 3 → public class RecetaPlatoPrincipal extends Receta
+   Explicación: Hereda atributos y métodos de la clase Receta, especializándola.
+
+2. ATRIBUTO PROPIO
+   - Línea 5 → private String recomendacionBebida;
+   Explicación: Añade un campo exclusivo para las recetas de plato principal.
+
+3. CONSTRUCTOR VACÍO (con llamada a super)
+   - Línea 7 → public RecetaPlatoPrincipal() { super(); }
+   Explicación: Permite crear un objeto sin parámetros, inicializando con el constructor por defecto de Receta.
+
+4. CONSTRUCTOR COMPLETO (con super)
+   - Desde línea 12 hasta 20
+   Explicación: Recibe todos los parámetros de la clase padre y además inicializa su propio atributo.
+
+5. SOBRECARGA DE CONSTRUCTORES
+   - Línea 23 → public RecetaPlatoPrincipal(String recomendacionBebida)
+   Explicación: Ejemplo de **sobrecarga** porque tiene diferente número de parámetros respecto al otro constructor.
+
+6. SOBRESCRITURA DE MÉTODO
+   - Línea 29 → @Override public int calcularTiempo()
+   Explicación: Modifica el comportamiento heredado de Receta restando 5 minutos al tiempo total.
+
+7. ENCAPSULAMIENTO (getter y setter)
+   - Desde línea 34 hasta 39
+   Explicación: Métodos públicos para acceder y modificar el atributo privado recomendacionBebida.
+
+
+ Clase RecetaPostre
+
+1. HERENCIA
+   - Línea 3 → public class RecetaPostre extends Receta
+   Explicación: La clase RecetaPostre hereda atributos y métodos de Receta, especializándola.
+
+2. CONSTRUCTOR VACÍO
+   - Línea 5 → public RecetaPostre() { super(); }
+   Explicación: Permite instanciar un objeto sin parámetros, llamando al constructor vacío de Receta.
+
+3. ATRIBUTO PROPIO
+   - Línea 9 → private int nivelDulzura;
+   Explicación: Atributo específico de la clase hija que no está en Receta.
+
+4. CONSTRUCTOR COMPLETO (con super)
+   - Desde línea 12 hasta 20
+   Explicación: Inicializa los atributos heredados usando el constructor de Receta y agrega nivelDulzura.
+
+5. SOBRECARGA DE CONSTRUCTORES
+   - Línea 23 → public RecetaPostre(int nivelDulzura, String descripcion)
+   Explicación: Ejemplo de **sobrecarga**, ya que este constructor tiene diferentes parámetros que el anterior.
+
+6. ENCAPSULAMIENTO (getter y setter)
+   - Desde línea 28 hasta 34
+   Explicación: Métodos públicos que permiten acceder y modificar el atributo privado nivelDulzura.
+
+7. SOBRESCRITURA DE MÉTODO (calcularTiempo)
+   - Línea 38 → @Override public int calcularTiempo()
+   Explicación: Cambia el comportamiento heredado de Receta restando 5 minutos.
+
+8. SOBRESCRITURA DE MÉTODO (toString)
+   - Desde línea 43 hasta 49
+   Explicación: Redefine el método toString de Receta para incluir el nivel de dulzura y el tiempo especial de postre.
+
+
+ Clase ValorNutricional
+
+1. ENCAPSULAMIENTO (atributos privados)
+   - Líneas 3 a 6 → private int calorias; private double proteinas; private double grasas; private double carbohidratos;
+   Explicación: Los atributos son privados, solo accesibles mediante getters y setters.
+
+2. CONSTRUCTOR
+   - Línea 8 → public ValorNutricional(int calorias, double proteinas, double grasas, double carbohidratos)
+   Explicación: Inicializa los atributos de la clase al momento de crear un objeto.
+
+3. MÉTODOS DE ACCESO (getters y setters)
+   - Desde línea 13 hasta 37
+   Explicación: Métodos públicos que permiten leer y modificar de forma controlada los atributos privados.
+
+4. SOBRESCRITURA DE MÉTODO (toString)
+   - Línea 39 → @Override public String toString()
+   Explicación: Se sobrescribe el método heredado de Object para mostrar los valores de los atributos de forma legible.
+
+Clase Cliente
+
+1. MÉTODO ESTÁTICO
+   - Línea 6 → public static void mostrarTiempo(Receta receta)
+   Explicación: Método de clase, no necesita un objeto para ser invocado.
+
+2. POLIMORFISMO (parámetro de tipo superclase)
+   - Línea 6 → mostrarTiempo(Receta receta)
+   Explicación: El método recibe una referencia de tipo Receta, pero en main se le pasan objetos de subclases (RecetaPostre, RecetaPlatoPrincipal).
+
+3. POLIMORFISMO (retorno de tipo superclase)
+   - Línea 13 → public static Receta crearRecetaDemo()
+   Explicación: Aunque el método retorna una Receta, internamente devuelve una instancia de RecetaPostre.
+
+4. CREACIÓN DE OBJETOS
+   - Línea 22 → Pais pais = new Pais("CO", "Colombia");
+   - Línea 24 → Autor autor = new Autor("Juan Pérez", pais, ...);
+   - Línea 26 → ValorNutricional valor = new ValorNutricional(200, 10, 5, 25);
+   - Línea 28 → new Ingrediente("I01", "Harina", "500g", ...)
+   - Línea 33 → new Instruccion("INS01", 1, "Mezclar harina...", ...)
+   - Línea 38 → Comentario comentario = new Comentario("C01", "Carlos", ...)
+   - Línea 40 → Receta receta = new Receta(...);
+   - Línea 46 → RecetaPostre recetaPostre = new RecetaPostre(...);
+   Explicación: Se crean instancias de distintas clases, mostrando composición y relaciones.
+
+5. AGREGACIÓN
+   - Línea 28 y 33 → Un arreglo de Ingrediente[] y de Instruccion[] se pasa al constructor de Receta.
+   Explicación: Una receta contiene ingredientes e instrucciones, relación de "tiene un".
+
+6. POLIMORFISMO EN ARREGLOS
+   - Línea 65 → Receta[] recetas = new Receta[5];
+   Explicación: Un mismo arreglo de tipo Receta puede contener objetos de RecetaPlatoPrincipal y RecetaPostre.
+
+7. POLIMORFISMO EN EJECUCIÓN
+   - Línea 94 → recetas[i].calcularTiempo()
+   Explicación: Según el objeto real (Postre, PlatoPrincipal), se invoca la versión sobrescrita de calcularTiempo().
+
+8. INVOCACIÓN DE MÉTODOS POLIMÓRFICOS
+   - Línea 106 → mostrarTiempo(recetaPostre);
+   - Línea 107 → Receta demo = crearRecetaDemo();
+   - Línea 108 → mostrarTiempo(demo);
+   Explicación: Se ve cómo un mismo método (`mostrarTiempo`) funciona para distintos tipos de objetos gracias al polimorfismo.
